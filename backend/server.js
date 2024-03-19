@@ -6,10 +6,14 @@ dotenv.config();
 const axios = require("axios");
 const app = express();
 const { createClient } = require("redis");
-const client = createClient();
-
+const client = createClient({
+  password: "c9k5lLKwnpjqUvShHAftHKsMNvZVrVtO",
+  socket: {
+    host: "redis-18722.c301.ap-south-1-1.ec2.cloud.redislabs.com",
+    port: 18722,
+  },
+});
 client.on("error", (err) => console.log("Redis Client Error", err));
-
 const port = process.env.PORT || 1000;
 
 app.use(cors());
